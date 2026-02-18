@@ -40,14 +40,12 @@ result = num1 + num2
 print(f"The result of adding {num1} and {num2} is: {result}") #printing the result of the addition of the two numbers
 
 #print numbers from 1 to 10
-i=1
-while i<=10:
+for i in range(1, 11):
     print(i)
     i += 1
 
 #print the user's name 5 times
 name2 = input("Enter your name: ")
-i=1
-while i<=5:
+for i in range(1, 6):
     print(name2)
     i += 1

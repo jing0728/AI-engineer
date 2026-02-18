@@ -29,7 +29,7 @@ Build strong Python + Algorithm foundation.
 Easy:
 Medium:
 
-github push:
-git add .
-git commit -m "Day 2: practiced loops"
-git push
+## github push:
+- [ ] git add .
+- [ ] git commit -m "Day 2: practiced loops"
+- [ ] git push
