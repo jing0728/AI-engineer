@@ -18,3 +18,8 @@ class Solution:
                 return [seen[complement], i]
 
             seen[num] = i
+
+##I use a hash map to store previously seen numbers and their indices.
+#For each number, I calculate the complement.
+#If the complement exists in the hash map, I return the stored index and current index.
+#Otherwise, I store the current number in the hash map.
