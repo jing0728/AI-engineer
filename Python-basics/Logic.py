@@ -321,3 +321,16 @@ while True:
     else:
         print("太小了")
     
+# 案例：1-1000之间所有五的倍数的数字之和
+sum=0
+for i in range(0,1001,5):
+    sum+=i
+print(sum)
+
+#案例：查询输入字符里面的a和k有几个
+i=0
+str = input("随意输入任意字符串： ")
+for char in str:
+    if char == 'a' or char == 'k':
+        i+=1
+print(i)
