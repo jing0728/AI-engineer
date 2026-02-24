@@ -31,7 +31,29 @@
 # # #列表的类型
 # # print(type(s))
 
-# #列表的访问
+
+
+# # 切片的语法为：list[start:stop:step]，其中start表示起始索引，stop表示结束索引（不包含），step表示步长
+# # #获取列表的子列表
+# print(s[1:4]) #获取索引1到3的元素，索引4的元素不包含在内
+# print(s[::2]) #获取列表中所有偶数索引的元素
+# print(s[::-1]) #获取列表中所有元素的反向顺序,也是就reverse()方法的功能
+
+# # 遍历列表中的元素
+# for i in s:
+#     print(i)
+
+# ####列表切片：切片是指对操作的数据截取其中的一部分的操作。
+# s = ["a","b","c","d","e","f"]
+# # # 切片的语法为：list[start:stop:step]，其中start表示起始索引，stop表示结束索引（不包含），step表示步长
+# print(s[0:5:2])# ['a', 'c', 'e']
+# print(s[0:5])# ['a', 'b', 'c', 'd', 'e']
+# print(s[:5])# ['a', 'b', 'c', 'd', 'e']
+# print(s[5])# f
+# print(s[:-2]) # ['a', 'b', 'c', 'd']
+
+####列表的方法
+
 # print(s[0]) #访问第一个元素
 # print(s[-1]) #访问最后一个元素
 
@@ -43,11 +65,7 @@
 # s.insert(3,"pig")
 # print(s)
 
-# #s[3] = "pig" #直接通过索引修改列表中的元素
-# s[3] = "pig"
-# print(s)
-
-# # remove()方法删除指定值的元素
+# # remove()方法删除指定值的元素，匹配到的第一个值
 # s.remove(50)
 # print(s)
 
@@ -55,8 +73,24 @@
 # del s[2]
 # print(s)
 
-# # pop()方法删除指定位置的元素并返回该元素
+# # pop()方法删除指定位置的元素并返回该元素，（如果未指定索引，默认删除最后一个）
 # s.pop(2)
+# print(s)
+
+# # sort()方法对列表进行排序
+# s.sort() #列表中元素类型不一致，无法排序，会报错
+# print(s)
+
+# # reverse()方法 反转列表
+# s.reverse()
+# print(s)
+
+# #s[3] = "pig" #直接通过索引修改列表中的元素
+# s[3] = "pig"
+# print(s)
+
+# # set()方法对列表进行去重处理
+# s.set()
 # print(s)
 
 # # len()函数获取列表的长度
@@ -68,20 +102,77 @@
 # # index()方法获取列表中某个元素的索引
 # print(s.index(10))
 
-# # sort()方法对列表进行排序
-# s.sort() #列表中元素类型不一致，无法排序，会报错
+##案例-用户输入数字然后进行排序，求平均值，最大值和最小值
+# s = []
+# for i in range(10):
+#     s.append(int(input("请输入十个数字：")))
+# print(s)
+# print(sum(s))
+# print(sum(s)/len(s))
+# s.sort()
+# print(s)
+# print(min(s)) 
+# print(max(s))
+
+# num_list1 = [19,23,54,64,875,20,109,232,123,54]
+# num_list2 = [55,80,72,35,60,123,54,29,91]
+# # num_list3 = sorted(set(num_list1+num_list2)) - set 方法
+# num_list3 = sorted(num_list2+num_list1)
+# num_list3=[*num_list1,*num_list2]
+# s = []
+# for i in num_list3:
+#     # if  (not s) or (s[-1] !=i):#当列表不为空，并且最后一位不和之前的相同
+#     #     s.append(i)#则向列表中加入i
+#     if i not in s:
+#         s.append(i)
 # print(s)
 
-# # reverse()方法反转列表等
-# s.reverse()
+
+# #解包：将列表这一类容器解开成一个一个独立的元素
+
+# #基本写法
+# a, *b = [1, 2, 3, 4]#*变量 会接收“剩余所有元素”
+# print(a)  # 1
+# print(b)  # [2, 3, 4]
+# #组包：将多个值合并到一个容器
+
+# a, *b, c = [1, 2, 3, 4, 5]#也可以放中间，只能有一个 *
+# # a = 1
+# # b = [2, 3, 4]
+# # c = 5
+
+# # 单星号：拆位置参数
+# def add(a, b, c):
+#     print(a + b + c)
+
+# nums = [1, 2, 3]
+# add(*nums)# 等于add(1, 2, 3)
+
+# #双星号：拆字典参数
+# def show(name, age):
+#     print(name, age)
+
+# info = {"name": "Tom", "age": 20}
+# show(**info)#等于show(name="Tom", age=20)
+
+# #列表/字典合并解包
+# a = [1, 2]
+# b = [3, 4]
+
+# c = [*a, *b]
+# print(c)#[1, 2, 3, 4]
+
+# #案例：生成1-20的平方列表
+# s=[]
+# for i in range(1,21):
+#     a = i**2
+#     s.append(a)
 # print(s)
 
-# # 切片的语法为：list[start:stop:step]，其中start表示起始索引，stop表示结束索引（不包含），step表示步长
-# # #获取列表的子列表
-# print(s[1:4]) #获取索引1到3的元素，索引4的元素不包含在内
-# print(s[::2]) #获取列表中所有偶数索引的元素
-# print(s[::-1]) #获取列表中所有元素的反向顺序,也是就reverse()方法的功能
-
-# # 遍历列表中的元素
-# for i in s:
-#     print(i)
+#案例：从下列数字列表中提取偶数，并且进行平方
+s = [19,23,54,64,87,20,109,232,123,43,26,55,72]
+n = []
+for i in s:
+    if i%2==0:
+        n.append(i**2)
+print(n)
