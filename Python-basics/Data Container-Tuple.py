@@ -62,21 +62,31 @@ student=(
     ('s10','tian',66,59,72)
     )
 print("学号\t姓名\t语文\t数学\t英语\t总成绩\t平均分")
+# #方式一
+# for s in student:
+#     total=s[2]+s[3]+s[4]
+#     avg=total/3
+#     print(f"{s[0]}\t{s[1]}\t{s[2]}\t{s[3]}\t{s[4]}\t{total}\t{avg:.1f}")
 
-for s in student:
-    total=s[2]+s[3]+s[4]
+#方式2
+for id,name,chinese,math,english in student:
+    total = chinese+math+english
     avg=total/3
-    print(f"{s[0]}\t{s[1]}\t{s[2]}\t{s[3]}\t{s[4]}\t{total}\t{avg:.1f}")
-chinese=[s[2] for s in student]
-print(f"语文最低分是{min(chinese)},最高分是{max(chinese)},平均分{sum(chinese)/len(chinese)}")
-math=[s[3] for s in student]
-print(f"数学最低分是{min(math)},最高分是{max(math)},平均分{sum(math)/len(math)}")
-english=[s[4] for s in student]
-print(f"英语最低分是{min(english)},最高分是{max(english)},平均分{sum(english)/len(english)}")
+    print(f"{id}\t{name}\t{chinese}\t{math}\t{english}")
+    print(f"语文最低分是{min(chinese)},最高分是{max(chinese)},平均分{sum(chinese)/len(chinese)}")
+    print(f"数学最低分是{min(math)},最高分是{max(math)},平均分{sum(math)/len(math)}")
+    print(f"英语最低分是{min(english)},最高分是{max(english)},平均分{sum(english)/len(english)}")
+# chinese=[s[2] for s in student]
+# print(f"语文最低分是{min(chinese)},最高分是{max(chinese)},平均分{sum(chinese)/len(chinese)}")
+# math=[s[3] for s in student]
+# print(f"数学最低分是{min(math)},最高分是{max(math)},平均分{sum(math)/len(math)}")
+# english=[s[4] for s in student]
+# print(f"英语最低分是{min(english)},最高分是{max(english)},平均分{sum(english)/len(english)}")
     
   
-for s in student:
-    total=s[2]+s[3]+s[4]
-    avg=total/3
-    if avg>=90:
-        print(f"{s[1]}是优秀学生")
+# for s in student:
+#     total=s[2]+s[3]+s[4]
+#     avg=total/3
+#     if avg>=90:
+#         print(f"{s[1]}是优秀学生")
+        
