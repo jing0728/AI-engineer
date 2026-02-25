@@ -30,16 +30,16 @@
 # *o,e=t1 #o=5,7,9 e=1
 
 # #变量值互换
-a=10
-b=20
+# a=10
+# b=20
 # a,b=b,a
 # print(a,b)
 #逻辑链条
-#元组t得了组包，有了b,a值
-t=b,a
-#这步就是进行了解包，a，b被元组t赋值了
-a,b=t
-print(a,b)
+# #元组t得了组包，有了b,a值
+# t=b,a
+# #这步就是进行了解包，a，b被元组t赋值了
+# a,b=t
+# print(a,b)
 
 # #变量值互换
 # a=100
@@ -47,3 +47,36 @@ print(a,b)
 # c=300
 # a,b,c=c,a,b
 # print(a,b,c)
+
+#案例：计算每个学生的平均分，总分；统计各科最低分，最高分；找出平均分大于90的学生
+student=(
+    ('s01','Lin',85,92,78),
+    ('s02','Li',92,88,95),
+    ('s03','shi',78,85,82),
+    ('s04','zen',88,79,91),
+    ('s05','zhou',95,96,89),
+    ('s06','wang',76,82,77),
+    ('s07','hong',89,91,94),
+    ('s08','xu',75,69,82),
+    ('s09','mu',86,89,98),
+    ('s10','tian',66,59,72)
+    )
+print("学号\t姓名\t语文\t数学\t英语\t总成绩\t平均分")
+
+for s in student:
+    total=s[2]+s[3]+s[4]
+    avg=total/3
+    print(f"{s[0]}\t{s[1]}\t{s[2]}\t{s[3]}\t{s[4]}\t{total}\t{avg:.1f}")
+chinese=[s[2] for s in student]
+print(f"语文最低分是{min(chinese)},最高分是{max(chinese)},平均分{sum(chinese)/len(chinese)}")
+math=[s[3] for s in student]
+print(f"数学最低分是{min(math)},最高分是{max(math)},平均分{sum(math)/len(math)}")
+english=[s[4] for s in student]
+print(f"英语最低分是{min(english)},最高分是{max(english)},平均分{sum(english)/len(english)}")
+    
+  
+for s in student:
+    total=s[2]+s[3]+s[4]
+    avg=total/3
+    if avg>=90:
+        print(f"{s[1]}是优秀学生")
