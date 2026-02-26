@@ -124,6 +124,55 @@
 #     length = round(3.14*2*r,1)#round()保留小数点
 #     return area,length
 # print(area_circle(10))
-
 # print("num",num)
+
 #函数参数的详解
+#传参方式
+#位置参数：调用函数是根据函数定义时候的位置来传递参数。调用函数时参数顺序与定义函数时参数顺序完全一致
+#关键字参数：调用函数时以函数定义时形参名称作为关键字，以“键”=“值”的形式来传递参数（顺序不要求一样）
+#关键字参数永远在位置参数之后
+
+# def reg_stu(name, age, gender, city):
+#     print(f"注册成功，姓名：{name}，年龄：{age}，性别：{gender}，城市：{city}")
+#     return {"name": name, "age": age, "gender": gender, "city": city}
+# stu=reg_stu("江南",24,"Male","NY")
+# print(stu)
+# stu1=reg_stu(name="江北",age=24,gender="Female",city="NJ")
+# stu2=reg_stu(age=24,gender="Female",name="江北",city="NJ")
+# print(stu1)
+# stu3=reg_stu("江西",24,city="NK",gender="None")
+# print(stu3)
+
+#默认参数也称为缺省参数，用于在定义函数时，为函数提供默认值，调用函数时，可以部传递有默认值的参数,默认参数要在非默认参数后面
+# def reg_stu(name, age, gender="M", city="GA"):
+#     print(f"注册成功，姓名：{name}，年龄：{age}，性别：{gender}，城市：{city}")
+#     return {"name": name, "age": age, "gender": gender, "city": city}
+# stu=reg_stu("Mike",24)
+# print(stu)
+# stu=reg_stu("Jane",25,"F")
+# print(stu)
+
+# #不定长参数（可变参数），用于函数定义以及调用时参数个数不确定的场景---位置传递，关键字传递
+# #位置传递（*args)-将数据封装到元组里面
+# #关键字传递（**kwagrs)-将数据封装到字典（dict）里面
+# def calc_data(*args,**kwargs):
+#     """
+#     :param args:不定长位置参数，需要计算的这批数据
+#     :param kwargs：不定长关键字参数
+#         round：保留的小数位
+#         print:是否打印输出
+#     :return:
+#     """
+#     return min(args),max(args),round(sum(args)/len(args),kwargs.get("round"))
+# data=calc_data(10,20,20,3,0,5,7,9,45)
+# print(data)
+
+#参数类型
+#特殊参数：函数
+def add(x,y):
+    return x+y
+def subtract(x,y):
+    return x-y
+def calc(x,y,oper):
+    return oper(x,y)
+print(calc(7,8,add))
