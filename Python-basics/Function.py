@@ -177,11 +177,27 @@
 #     return oper(x,y)
 # print(calc(7,8,add))
 
-# #匿名参数-lambda，可以简化简单函数的编写
-# #lambda 参数列表：函数体
-# add=lambda x,y:x+y
-# print(add(2,4))
+# # #匿名参数-lambda，可以简化简单函数的编写
+# # #lambda 参数列表：函数体
+# # add=lambda x,y:x+y
+# # print(add(2,4))
 
-data_list=["c++","java","python","php","go","javascript"]
-data_list.sort(key=lambda item:len(item),reverse=True)#作为高级函数的调用使用
-print(data_list)
+# data_list=["c++","java","python","php","go","javascript"]
+# data_list.sort(key=lambda item:len(item),reverse=True)#作为高级函数的调用使用
+# print(data_list)
+
+#案例：计算阶乘
+# def calc(x):
+#     result = 1
+#     for i in range(1,x+1):
+#         result*=i
+#     return result
+# print(calc(4))
+
+#递归调用：指的时函数中自己调用自己的情况--->一定要有终结点
+def calc(n):
+    if n==1:
+        return 1
+    else:
+        return n*calc(n-1)
+print(calc(4))
