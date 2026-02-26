@@ -29,12 +29,101 @@
 #     return area
 # print(area_rectangle(7,8))
 
-# 案例：计算圆形的面积--->如果返回值有多个--->多个返回值会封装到元组当中
-def area_circle(r):
-    area = 3.14*r**2
-    length = round(3.14*2*r,1)#round()保留小数点
-    return area,length
-area,len=area_circle(5)
-print(area)
-print(len)
+# # 案例：计算圆形的面积--->如果返回值有多个--->多个返回值会封装到元组当中
+# def area_circle(r):
+#     area = 3.14*r**2
+#     length = round(3.14*2*r,1)#round()保留小数点
+#     return area,length
+# area,len=area_circle(5)
+# print(area)
+# print(len)
+
+#help()--->用于查看函数的的说明文档
+####函数的说明文档：用三引号包裹的字符串，用于解释函数的功能，参数，返回值等信息，方便调用者清楚函数的具体作用及细节
+# # 案例：计算圆形的面积
+# def area_circle(r):
+#     """
+#     该函数用于根据圆的半径，计算圆的面积和圆的周长
+#     :param r :圆的半径 # :param -->描述函数的参数
+#     :return：圆形的面积和周长 #:return --->-->描述函数的返回值
+#     """
+#     area = 3.14*r**2
+#     return area
+# print(area_circle(2))
+
+# ####函数的嵌套调用：嵌套调用指的是在一个函数中，又调用了另一个函数
+# #函数调用遵循栈结构，最后被调用的函数最先返回LIFO(Last In First Out, 后进先出)
+
+# # 函数的嵌套调用
+
+# def function_a():  # 1 个用法
+#     print("a ... before")
+#     function_b()
+#     print("a ... after")
+
+# def function_b():  # 1 个用法
+#     print("b ... before")
+#     function_c()
+#     print("b ... after")
+
+# def function_c():  # 1 个用法
+#     print("c ...")
+
+# function_a()
+
+# print("函数调用完毕 ~")
+
+#案例:
+#定义一个函数：根据传入的底和高计算三角形面积的函数三角形面积 = 底 * 高 / 2）。
+# def area(b,h):
+#     """
+#     该函数用于根据三角形底和高来进行计算三角形的面积
+#     :param b: 三角形的底
+#     :param b: 三角形的高
+#     :return: 三角形的面积
+#     """
+#     return h*b/2
+
+#定义一个函数：计算传入的字符串中元音字母的个数（元音字母为 aeiouAEIOU）。
+# def vowel(s):
+#     """
+#     该函数根据用户输入的字符串来排定字符串中的元音个数
+#     :param s: 用户输入的字符串
+#     :return: 元音的个数
+#     """
+#     num = 0
+#     for ch in s:
+#         if ch in "aeiouAEIOU":
+#             num += 1
+#     return num
+# def vowel(s):
+#     return sum(ch in "aeiouAEIOU" for ch in s)
+# s = input("请输入一串英文：")
+# count = vowel(s)
+# print(f"一共有 {count} 个元音字母")
+
+#定义一个函数：计算传入的班级学员高考成绩列表中成绩的最高分、最低分、平均分（保留1位小数），并返回。
+# def score(s):
+#     return round(max(s),1),round(min(s),1),round(sum(s)/len(s),1)
+# s = int(input("请输入高考成绩"))
+# max_score,min_score,avg_score=score(s)
+# print(f"最高分是{max_score}，最低分是{min_score}，平均分是{avg_score}")
+
 ####函数进阶
+
+##函数变量的作用域：变量的作用范围
+# #全局变量：在函数之外定义的变量，在整个文件中都可以使用
+# #局部变量：只可以在函数内部使用
+# num =100
+# def area_circle(r):
+#     pi=3.14
+#     area = pi*r**2
+#     global num  #global用于明确的告诉python，在函数中要使用全局变量，使得可以在函数内部修改全局变量的值
+#     num=1000
+#     print("num",num)
+#     length = round(3.14*2*r,1)#round()保留小数点
+#     return area,length
+# print(area_circle(10))
+
+# print("num",num)
+#函数参数的详解
