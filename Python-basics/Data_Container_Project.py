@@ -190,3 +190,6 @@ while True:
 
         case _:
             print("输入错误，请重新选择")
+
+if __name__=='__mian__':
+    subject_stats()

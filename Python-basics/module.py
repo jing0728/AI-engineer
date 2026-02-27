@@ -19,5 +19,13 @@
 
     
 ####自定义模块
+# #模块名字就是py文件的名字
+# import Data_Container_Project#导入自定义模块
+# Data_Container_Project.subject_stats#使用模块中的功能
+# #__name__ -->内置变量：表示当前模块的名字
+# #测试代码-这段代码只有在当前文件时才会进行运算
+# #__all__是一个模块级别的特殊变量，用于指定 from 模块名 import * 时会导入哪些功能（*通配了哪些功能）//private
+# if __name__=='__mian__':
+#     Data_Container_Project.subject_stats
 
 ####软件包（package）
