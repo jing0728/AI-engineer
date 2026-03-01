@@ -22,6 +22,6 @@ class Car:
         print(f'我是show函数，对象的颜色：{self.color},轮胎数是{self.number}')
 #2.创建汽车类的对象
 c1 = Car('red',6) #调用了init()函数，但是该函数有参数所以必须传参
-#修改c1的属性值
+
 c1.show()
 
