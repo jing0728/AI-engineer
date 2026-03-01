@@ -27,3 +27,15 @@
 #调用类
 
 #Self是python内置的关键字，用于指向对象实例本身
+
+"""属性：表示的是固有特征，在python中用变量表示
+类外：
+    设置属性：
+        对象名.属性 = 属性值
+        car.color = 'red' #定义属性，并给属性color赋值
+        car.number =4     #给属性number赋值
+    获取属性值：
+        对象名.属性
+        print("颜色：%s"% car.color)
+        print("轮胎数：%d"%car.number)
+"""
