@@ -2,10 +2,12 @@
 该文件用于 完成学生系统的 具体业务的操作，即：增删改查，保存学生信息。。。
 """
 #导包
+import json
 from student import Student
 class StudentCMS:
     def __init__(self):
         self.stu_list=[]
+        self.load()
     def show_menu(self):
         menu=""" 
 ************************************
@@ -76,10 +78,41 @@ class StudentCMS:
                 print(stu)
             print()#为了格式好看加入换行
             
+    # def save(self):
+    #     with open('./stu_data.txt','w',encoding='utf-8') as dest_f:
+    #         stu_dict=[stu.__dict__ for stu in self.stu_list]
+    #         dest_f.write(str(stu_dict))
+    # def load(self):
+    #     try:
+    #         with open('./stu_data.txt','r',encoding='utf-8') as dest_f:
+    #             stu_data=dest_f.read()
+    #             stu_list=eval(stu_data)
+    #             if len(stu_list)==0:
+    #                 stu_list=[]
+    #             self.stu_list=[Student(**stu_dict) for stu_dict in stu_list]
+    #     except:
+    #         with open('./stu_data.txt','w',encoding='utf-8') as dest_f:
+    #             pass
     def save(self):
-        pass
+        # ✅ JSON 保存（安全、通用）
+        with open("./stu_data.json", "w", encoding="utf-8") as f:
+            data = [stu.__dict__ for stu in self.stu_list]
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
     def load(self):
-        pass
+        try:
+            with open("./stu_data.json", "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if not data:
+                    self.stu_list = []
+                else:
+                    self.stu_list = [Student(**stu_dict) for stu_dict in data]
+        except FileNotFoundError:
+            # 第一次运行没有文件：正常情况
+            self.stu_list = []
+        except json.JSONDecodeError:
+            # 文件损坏或空文件：兜底
+            self.stu_list = []
     def excute(self):
         while True:
             self.show_menu()
@@ -101,11 +134,12 @@ class StudentCMS:
                     print("显示所有学生信息")
                     self.show_all()
                 case '6':
-                    print("保存信息")
                     self.save()
+                    print("保存信息")
                 case '7':
                     user_input=input("正在退出系统是否确认退出，请输入Y/N:")
                     if user_input.lower() == "y":
+                        self.save()
                         print("退出系统")
                         break
                     else:
