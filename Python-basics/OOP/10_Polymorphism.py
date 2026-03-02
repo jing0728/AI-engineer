@@ -124,3 +124,4 @@ if __name__ == "__main__":
     fight(h2,e1)
     
     #fight(h2,h1) #Python 是Duck Typing so有没有(hero:HeroFighter,enmey:EnmeyFighter)都会正常运行，只是会报警告而已
+    
