@@ -28,4 +28,15 @@
 # if __name__=='__mian__':
 #     Data_Container_Project.subject_stats
 
-####软件包（package）
+####软件包（package）-->用来管理多个模块，包的本质也是一个模块
+#__init__.py -->用来解释这个包是干什么的
+#包的导入
+# #import 包名.模块名 —— import random.os -->调用方式：模块名，功能名,包名
+
+# #from 包名import * —— from random.rd import* -->调用方式：模块名，功能名
+#如果通过这个方式进行导入包下的文件，需要在__init__.py中添加__all__
+# #from 包名 import 模块名 —— from random import choice -->调用方式：模块名，功能名
+
+# #from 包名.模块名 import 功能名 — from random.rd import randint  -->调用方式：功能名
+
+# #from 包名.模块名 import * —— from random.rd import* -->调用方式：功能名
