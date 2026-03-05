@@ -124,30 +124,61 @@
 # print(sum)
 
 
+# """ 
+# 案例：多个装饰器装饰一个函数
+# 记忆：
+#     多个装饰器装饰一个函数，是按照 由内向外的顺序来装饰的
+#     但是如果你要是用 装饰器的写法来做，看到的效果是：从上到下执行的
+# """
+# #需求：发表评论前，先登入验证，再验证码验证
+# def login(func):
+#     def fn_inner():
+#         print("登入验证：")
+#         func()
+#     return fn_inner
+# def code(func):
+#     def fn_inner():
+#         print("验证码验证：")
+#         func()
+#     return fn_inner
+
+# @login
+# @code
+# def comment():
+#     print("发表评论")
+# comment()
+
+# #传统写法
+# comment=login(code(comment))
+# comment()
+
+
 """ 
-案例：多个装饰器装饰一个函数
-记忆：
-    多个装饰器装饰一个函数，是按照 由内向外的顺序来装饰的
-    但是如果你要是用 装饰器的写法来做，看到的效果是：从上到下执行的
+一个装饰器有并且只能有一个参数
+带有参数的装饰器，其实是再装饰器 外面又包裹 了一个函数，使用该函数接收参数， 返回装饰器
+
 """
-#需求：发表评论前，先登入验证，再验证码验证
-def login(func):
-    def fn_inner():
-        print("登入验证：")
-        func()
-    return fn_inner
-def code(func):
-    def fn_inner():
-        print("验证码验证：")
-        func()
-    return fn_inner
 
-@login
-@code
-def comment():
-    print("发表评论")
-comment()
-
-#传统写法
-comment=login(code(comment))
-comment()
+#定义一个既能装饰减法又能装饰加法的装饰器
+def func(flag):
+    def func(fun):
+        def fn_inner(*args,**kwargs):
+            if flag =='+':
+                print(f"现在在运算的是{flag}法")
+                fun(*args,**kwargs)
+            if flag =='-':
+                print(f"现在在运算的是{flag}法")
+                fun(*args,**kwargs)
+            
+        return fn_inner
+    return func
+@func('+')
+def add(a,b):
+    print(a+b)
+    
+@func('-')
+def sub(a,b):
+    print(a-b)
+    
+add(4,5)
+sub(5,4)
