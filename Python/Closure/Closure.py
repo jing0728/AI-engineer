@@ -1,20 +1,23 @@
 """ 
-案例：闭包的背景介绍
+案例：闭包的背景介绍:保存外部函数的变量，延长外部函数的局部变量的生命周期
 
 案例目的：
-    引出来 闭包 相关的知识点
+    引出来 闭包 相关的知识点 late binding
     
 """
 #需求：定义函数保存变量10，调用函数返回值 并 重复累加数值，观察结果
 #1.定义函数，保存变量10
 
-def func():
+def func(num):
     num=10
-    return 10
-num =func()
-print(num+1)
-print(num+2)
-print(num+3)
+    def add(num2):
+        nonlocal num
+        for i in range(num2):
+            num+=num2
+        return num
+    return add
+add=func(2)
+print(add(5))
 
 """ 
 案例：闭包的语法和用法介绍
@@ -60,3 +63,39 @@ func2=func1(10)
 func2(20)
 
 func1(10)(20)
+
+""" 
+nolocal:
+    python内置的关键字，能让内部函数修改外部函数的变量
+"""
+#需求：编写一个闭包，让内部函数可以访问外部函数的参数 a=100,并观察结果
+def func(num):
+    def func2(a):
+        nonlocal num
+        num=a
+        print(num)
+        return num
+    return func2
+func2=func(3)
+print(func2(100))
+
+#需求：写一个函数 outer()，让内部函数 inner() 可以访问外部变量 x。
+def outer(x):
+    def inner():
+        return x
+    return inner
+f =outer(10)
+print(f())
+
+#需求：写一个闭包实现 计数器。
+def outer(x):
+    def inner():
+        nonlocal x
+        x=x+1
+        return x
+    return inner
+c=outer(5)
+print(c())
+print(c())
+print(c())
+
