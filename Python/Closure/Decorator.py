@@ -73,3 +73,34 @@ def get_sum(a,b):
     print(a+b)
 
 get_sum(5,6)
+
+#案例：定义有参有返回值的get_sum()求和函数，在不改变其代码的基础上，添加友好提示：
+def notice(func):
+    def fn_inner(*args,**kwargs): #*args-接收所有“位置参数”-->并且会被打包成一个 tuple（元组）  #**kwargs -接收所有“关键字参数”-->并且会被打包成 dict（字典）
+        print("正在努力计算中...")
+        return func(*args,**kwargs)
+    return fn_inner
+
+@notice
+def get_sum(a,b):
+    sum=print(a+b)
+    return sum
+
+get_sum(5,6)
+
+#案例：定义无参有返回值的get_sum()求和函数，在不改变其代码的基础上，添加友好提示：
+def notice(func):
+    def fn_inner(): #*args-接收所有“位置参数”-->并且会被打包成一个 tuple（元组）  #**kwargs -接收所有“关键字参数”-->并且会被打包成 dict（字典）
+        print("正在努力计算中...")
+        return func()
+    return fn_inner
+
+@notice
+def get_sum():
+    a=10
+    b=5
+    sum=print(a+b)
+    return sum
+
+get_sum()
+
